@@ -158,18 +158,16 @@ html
                 a.navbar-link(href='/info')
                   span.glyphicon.glyphicon-info-sign
                   span.menu-text #{settings.locale.menu_api}
-          ul.nav.nav-bar.navbar-right
-            img(src='#{settings.logo}', style='margin-top:4px;height:40px;')
 
     .col-md-12
-      .row
+      .row.text-center
         if settings.display.masternodes == false
           .col-lg-1.col-md-2
         if settings.display.coinmarketcap == true
           .col-lg-5.col-md-8
-            .panel.panel-primary.panel-summary
+            .panel.panel-default.panel-summary
               .panel-heading
-                span Market
+                strong Market
               .panel-body
                 row.text-center
                   .col-sm-4
@@ -199,24 +197,24 @@ html
           .col-lg-3.col-md-0
 
         if settings.index.show_coin_supply
-          - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-2 col-md-4 col-sm-4" : "col-lg-3 col-md-4 col-sm-4"
+          - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-2 col-md-4 col-sm-4" : "col-lg-2 col-md-4 col-sm-4"
           div(class=supplyPanelSize)
-            .panel.panel-primary.panel-summary
+            .panel.panel-default.panel-summary
               .panel-heading
-                span #{settings.locale.ex_supply}
+                strong #{settings.locale.ex_supply} (#{settings.symbol})
               .panel-body(style="padding-top: 35px")
                 row.text-center
                   .col-md-12
                     h1#supply -
         if settings.index.show_hashrate
-          .col-lg-3.col-md-4.col-sm-4
-            .panel.panel-primary.panel-summary
+          .col-lg-2.col-md-4.col-sm-4
+            .panel.panel-default.panel-summary
               .panel-heading
-                span #{settings.locale.network}
+                strong #{settings.locale.network}
               .panel-body(style="padding-top: 25px")
                 row.text-center
                   .col-md-12
-                    h1
+                    label
                       if settings.index.difficulty == 'Hybrid'
                         label#hashrate -
                         <br>
@@ -245,9 +243,9 @@ html
                         label#difficulty -
         if settings.display.masternodes == true
           .col-lg-2.col-md-4.col-sm-4
-            .panel.panel-primary.panel-summary
+            .panel.panel-default.panel-summary
               .panel-heading
-                span #{settings.locale.masternodes}
+                strong #{settings.locale.masternodes}
               .panel-body(style="padding-top: 25px")
                 row.text-center
                   .col-md-12
