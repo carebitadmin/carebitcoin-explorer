@@ -518,7 +518,7 @@ router.get('/ext/coindetails', function(req, res) {
                 coin_name: settings.coin,
                 symbol: settings.symbol,
                 logo: settings.logo,
-				banner: settings.banner,
+                banner: settings.banner,
                 mobile_app_v: 1,
                 supply: stats.supply,
                 last_price_btc: stats.last_price,

@@ -263,11 +263,25 @@ html
     block content
     .navbar.navbar-default.navbar-fixed-bottom.hidden-xs
       .col-md-4
+        ul.nav.navbar-nav
+          li.pull-left
+            a#twitter-icon(href="https://twitter.com/#{settings.twitter}", target='_blank')
+              span.glyphicon.fa.fa-twitter
+        if settings.display.facebook
+          ul.nav.navbar-nav
+            li.pull-left
+              a#facebook-icon(href="https://www.facebook.com/Carebit.org", target='_blank')
+                span.glyphicon.fa.fa-facebook
+        if settings.display.googleplus
+          ul.nav.navbar-nav
+            li.pull-left
+              a#googleplus-icon(href="https://plus.google.com/#{settings.googleplus}", target='_blank')
+                span.glyphicon.fa.fa-google-plus
+      .col-md-4
         ul.nav
           li.text-center(style='margin-left:80px;margin-right:80px;')
-            p(style='margin-top:15px;') 
+            p(style='margin-top:25px;') 
               a.navbar-link(href='https://github.com/iquidus/explorer', target='_blank') Powered by Iquidus Explorer 
-   
       span.connections
         label#lblBlockcount.label.label-default
           span#lblBlockcountValue -
