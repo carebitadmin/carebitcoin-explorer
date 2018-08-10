@@ -43,6 +43,8 @@ html
             $("#lblConnections").text(json.data[0].connections + ' connections');
             $("#lblBlockcountValue").text(json.data[0].blockcount);
 
+            $("#lblConnectionsNav").text(json.data[0].connections);
+            $("#lblBlockcountValueNav").text(json.data[0].blockcount);
 
             if (json.data[0].cmc) {
               if (json.data[0].cmc.percent_change_24h) {
@@ -161,66 +163,82 @@ html
 
     .col-md-12
       .row.text-center
+        .col-lg-2.col-md-4
+          .panel.panel-default
+            .panel-heading
+              strong General
+            .panel-body(style="min-height:65px;")
+              row.text-center
+                .col-sm-6.col-xs-12(class="text-right")
+                  span Blocks: 
+                .col-sm-6.col-xs-12(class="text-left")
+                  span#lblBlockcountValueNav.text-primary(style="font-size:16px;")
+              row.text-center
+                .col-sm-6.col-xs-12(class="text-right")
+                  span Connections: 
+                .col-sm-6.col-xs-12(class="text-left")
+                  span#lblConnectionsNav
         if settings.display.masternodes == false
           .col-lg-1.col-md-2
         if settings.display.coinmarketcap == true
-          .col-lg-5.col-md-8
-            .panel.panel-default.panel-summary
+          .col-lg-4.col-md-7
+            .panel.panel-default
               .panel-heading
                 strong Market
-              .panel-body
+              .panel-body(style="min-height:65px;")
                 row.text-center
-                  .col-sm-4
-                    h1
-                      label#price_usd
-                      =" USD"
-                    h5#price_percent_change
-                      =" ("
-                      label#price_percent_change_value
-                      ="%)"
-                    h3
-                      label#price_btc
+                  .col-sm-3.col-xs-6(class="text-right")
+                    span Price:
+                  .col-sm-3.col-xs-6(class="text-left")
+                    span#price_btc -
                       =" BTC"
-                  .col-sm-4
-                    p(class="text-right") Market cap:
-                    p(class="text-right") 24H Volume:
-                  .col-sm-4
-                    p(class='text-left')
-                      ="$"
-                      span#cmc_market_cap -
-                      =" USD"
-                    p(class='text-left')
-                      ="$"
-                      span#cmc_volume_24h -
-                      =" USD"
+                  .col-sm-3.col-xs-6(class="text-right")
+                    span 24H Change:
+                  .col-sm-3.col-xs-6(class="text-left")
+                      span#price_percent_change_value -
+                      =" %"
+                row.text-center
+                  .col-sm-3.col-xs-6(class="text-right")
+                    span Market cap:
+                  .col-sm-3.col-xs-6(class="text-left")
+                    span#cmc_market_cap -
+                    =" USD"
+                  .col-sm-3.col-xs-6(class="text-right")
+                    span 24H Volume:
+                  .col-sm-3.col-xs-6(class="text-left")
+                    span#cmc_volume_24h -
+                    =" USD"
         else
           .col-lg-3.col-md-0
 
         if settings.index.show_coin_supply
           - supplyPanelSize = settings.display.coinmarketcap == true ? "col-lg-2 col-md-4 col-sm-4" : "col-lg-2 col-md-4 col-sm-4"
           div(class=supplyPanelSize)
-            .panel.panel-default.panel-summary
+            .panel.panel-default
               .panel-heading
                 strong #{settings.locale.ex_supply} (#{settings.symbol})
-              .panel-body(style="padding-top: 35px")
+              .panel-body(style="min-height:65px;")
                 row.text-center
-                  .col-md-12
-                    h1#supply -
+                  .col-md-12.text-default(style="font-size:16px; font-weight:bold;")
+                    span#supply
+                row.text-center
+                  .col-md-12.text-default(style="font-size:12px; color:gray;")
+                    span Total supply: 250,000,000
         if settings.index.show_hashrate
-          .col-lg-2.col-md-4.col-sm-4
-            .panel.panel-default.panel-summary
+          .col-lg-2.col-md-3.col-sm-4
+            .panel.panel-default
               .panel-heading
                 strong #{settings.locale.network}
-              .panel-body(style="padding-top: 25px")
+              .panel-body(style="min-height:65px;")
                 row.text-center
-                  .col-md-12
-                    label
+                  .col-md-12.text-default(style="color:gray;")
+                    span
                       if settings.index.difficulty == 'Hybrid'
-                        label#hashrate -
+                        span#hashrate -
                         <br>
-                        label#lblX1
+                        span#lblX1
                       else
-                        label#hashrate -
+                        span#hashrate -
                       if settings.nethash_units == 'K'
                         =" (KH/s)"
                       else if settings.nethash_units == 'M'
@@ -233,25 +251,28 @@ html
                         =" (PH/s)"
                       else if settings.nethash_units == 'H'
                         =" (H/s)"
-                    h3
-                      label #{settings.locale.difficulty}: &nbsp;
+                row.text-center
+                  .col-md-12.text-default(style="font-size:15px; font-weight:bold;")
+                      span #{settings.locale.difficulty}: &nbsp;
                       if settings.index.difficulty == 'Hybrid'
-                        label#difficulty -
+                        span#difficulty
                         <br>
-                        label#difficultyHybrid -
+                        span#difficultyHybrid
                       else
-                        label#difficulty -
+                        span#difficulty
         if settings.display.masternodes == true
           .col-lg-2.col-md-4.col-sm-4
-            .panel.panel-default.panel-summary
+            .panel.panel-default
               .panel-heading
                 strong #{settings.locale.masternodes}
-              .panel-body(style="padding-top: 25px")
+              .panel-body(style="min-height:65px;")
                 row.text-center
-                  .col-md-12
-                    h1#masternodeCount -
-                    h3 online:&nbsp;
-                      label#masternodeOnlineCount -
+                  .col-md-12.text-default(style="font-size:16px; font-weight:bold;")
+                    span#masternodeCount
+                row.text-center
+                  .col-md-12.text-default(style="color:gray;")
+                    span online:&nbsp;
+                      span#masternodeOnlineCount
 
     .col-md-12
       .row.text-center(style='margin-top:10px;margin-bottom:20px;')
@@ -281,12 +302,4 @@ html
         ul.nav
           li.text-center(style='margin-left:80px;margin-right:80px;')
             p(style='margin-top:25px;') 
-              a.navbar-link(href='https://github.com/iquidus/explorer', target='_blank') Powered by Iquidus Explorer 
-      span.connections
-        label#lblBlockcount.label.label-default
-          span#lblBlockcountValue -
-          if settings.baseType === 'ripple'
-            span  ledgers
-          else
-            span  blocks
-        label#lblConnections.label.label-default -
+              a.navbar-link(href='https://carebit.org', target='_blank') CAREBIT - A non-profit charity blockchain ledger 
