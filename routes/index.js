@@ -419,11 +419,11 @@ router.get('/ext/summary', function(req, res) {
                     hashrate = 0;
                   }
                   res.send({ data: [{
-                    difficulty: difficulty,
+                    difficulty: formatNum(difficulty, { maxFraction: 0 }),
                     difficultyHybrid: difficultyHybrid,
                     masternodeCount: masternodecount,
                     masternodeOnlineCount: masternodeonlinecount,
-                    supply: formatNum(stats.supply, { maxFraction: 4 }),
+                    supply: formatNum(stats.supply, { maxFraction: 0 }),
                     hashrate: hashrate,
                     lastPriceBtc: formatNum(stats.last_price, { maxFraction: 8 }),
                     lastPriceUsd: formatCurrency(cmc.price_usd, { maxFraction: 6 }),
@@ -518,7 +518,7 @@ router.get('/ext/coindetails', function(req, res) {
                 coin_name: settings.coin,
                 symbol: settings.symbol,
                 logo: settings.logo,
-                banner: settings.banner,
+				banner: settings.banner,
                 mobile_app_v: 1,
                 supply: stats.supply,
                 last_price_btc: stats.last_price,
