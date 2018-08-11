@@ -32,7 +32,7 @@ mongoose.connect(dbString, function(err) {
             // peer already exists
             loop.next();
           } else {
-            request({uri: 'http://freegeoip.net/json/' + address, json: true}, function (error, response, geo) {
+            request({uri: 'http://api.ipstack.com/' + address + '?access_key=c6b042f167649d7db541ec570b586728&output=json&legacy=1', json: true}, function (error, response, geo) {
               db.create_peer({
                 address: address,
                 protocol: body[i].version,
