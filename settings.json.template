@@ -5,7 +5,7 @@
 */
 {
   // name your instance!
-  "title": "CarebitCoin Block Explorer",
+  "title": "Carebit Explorer",
 
   "address": "127.0.0.1:3000",
 
@@ -77,11 +77,11 @@
     "facebook": false,
     "googleplus": false,
     "search": true,
-    "movement": true,
+    "movement": false,
     "network": true,
     "masternodes": false,
     "coininfo": false,
-    "coinmarketcap": false
+    "coinmarketcap": true
   },
 
   // index page (valid options for difficulty are POW, POS or Hybrid)
