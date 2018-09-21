@@ -159,7 +159,7 @@
 
   // CoinMarketCap integration
   "coinmarketcap": {
-    "ticker": "BTC"
+    "ticker": "carebit"
   },
 
   // twitter, facebook, googleplus
